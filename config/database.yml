@@ -1,0 +1,22 @@
+default: &default
+ adapter: postgresql
+ timeout: 5000
+development:
+ <<: *default
+ pool: 5
+ host: localhost
+ username: postgres
+ password: postgres
+ port: 5433
+ database: development_tasker
+test:
+ <<: *default
+ pool: 5
+ host: localhost
+ username: postgres
+ password: postgres
+ port: 5433
+ database: test_tasker
+production:
+ <<: *default
+ database: production_tasker
