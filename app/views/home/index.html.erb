@@ -1,2 +1,24 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="form-upload">
+    <%= form_for Task.new do |f| %>
+        <div class="form-group">
+            <%= f.text_field :title %>
+        </div>
+        <div class="form-group">
+            <%= f.text_field :user_id, value: current_user.id, class:'d-none'%>
+        </div>
+        <br>
+        <div class="text-center">
+            <%= f.submit 'Create Task', class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+</div>
+
+<div class="tasks">
+    <% @tasks.each do |task| %>
+        <section class="task">
+            <div class="title">
+                <%= task.title %>
+            </div>
+        </section>
+    <% end %>
+</div>

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   # Users
   resources :users, only: [:show, :edit, :update]
+  resources :tasks, only: [:new, :create]
 end
