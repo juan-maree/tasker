@@ -15,10 +15,16 @@
 
 <div class="tasks">
     <% @tasks.each do |task| %>
-        <section class="task">
-            <div class="title">
-                <%= task.title %>
-            </div>
-        </section>
+        <%= link_to task_path(task) do %>
+            <section class="task">
+                <div class="title">
+                    <%= task.title %>
+                </div>
+            </section>
+        <% end %>
     <% end %>
+
+    <%= paginate @tasks %>
 </div>
+
+<span><%= @tasks.count %></span> tasks

@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   
   root to: 'home#index'
 
-  # Users
   resources :users, only: [:show, :edit, :update]
-  resources :tasks, only: [:new, :create]
+  resources :tasks, only: [:new, :create, :show, :destroy]
 end

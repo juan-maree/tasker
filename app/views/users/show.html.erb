@@ -2,7 +2,9 @@
     <div class="profile row">
         <div class="col-md-4 avatar">
             <div class="wrapper">
-                <img src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80">
+                <% if current_user.avatar.attached? %>
+                    <%= image_tag current_user.avatar %>
+                <%end %>
             </div>
         </div>
 
@@ -13,6 +15,11 @@
                     <button>Edit Profile</button>
                 </a>
             </div>
+            <ul class="tabs">
+                <li><span><%= @tasks.count %></span> tasks</li>
+                <li><span>195</span> followers</li>
+                <li><span>345</span> following</li>
+            </ul>
         </div>
     </div>
 </div>

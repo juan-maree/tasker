@@ -3,10 +3,19 @@
 
     .task{
         border: 1px solid #efefef;
-        margin: 60px 0;
+        margin: 5px 0;
         border-radius: 3px;
     }
     .title{
         padding: 20px;
     }
+}
+
+.task-show{
+    margin: 30px 5px 0;
+    border: 1px solid #dbdbdb;
+
+    .description{
+        padding: 15px 0;
+      }
 }
