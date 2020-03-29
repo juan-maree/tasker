@@ -1,0 +1,19 @@
+<div class="search-page">
+  <% unless @tasks.exists? %>
+    <h1>Oops! No matching posts ...</h1>
+  <% end %>
+</div>
+
+<div class="user-tasks">
+  <% @tasks.each do |task| %>
+    <div class="wrapper">
+      <%= link_to task_path(task) do %>
+        <section class="task">
+          <div class="title">
+              <%= task.title %>
+          </div>
+        </section>
+      <% end %>
+    </div>
+  <% end %>
+</div>

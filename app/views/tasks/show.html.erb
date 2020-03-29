@@ -2,12 +2,18 @@
     <%= @task.title %>
     <%= @task.due_date %>
     <div class="description">
-        <%= @task.description %>
+        <% @task.description.to_s.split(" ").each do |word| %>
+            <% if word.start_with?("#") %>
+                <%= link_to word, search_path(query: word) %>
+            <% else %>
+                <%= word %>
+            <% end %>
+        <% end %>
     </div>
     <div class="delete">
         <% if current_user.tasks.exists?(@task.id) %>
-            <%= link_to task_path(@task), method: :delete, data: {confirm: 'Are you sure?'} do %>
-                <%= fa_stacked_icon "trash"%>
+            <%= link_to task_path(@task), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <%= fa_stacked_icon "trash" %>
             <% end %>
         <% end %>
     </div>
