@@ -5,16 +5,16 @@ development:
  <<: *default
  pool: 5
  host: localhost
- username: juan
- password: 
+ username: <%= ENV["POSTGRES_USER"] %>
+ password: <%= ENV["POSTGRES_PASSWORD"] %>
  port: 5432
  database: development_tasker
 test:
  <<: *default
  pool: 5
  host: localhost
- username: juan
- password: 
+ username: <%= ENV["POSTGRES_USER"] %>
+ password: <%= ENV["POSTGRES_PASSWORD"] %>
  port: 5432
  database: test_tasker
 production:

@@ -8,7 +8,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
       - name: Ruby gem cache
@@ -59,9 +58,10 @@ jobs:
       postgres:
         image: postgres:11
         env:
-          POSTGRES_USER: myapp
-          POSTGRES_DB: myapp_test
-          POSTGRES_PASSWORD: ""
+          RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test_tasker
         ports: ["5432:5432"]
 
     steps:
@@ -81,6 +81,7 @@ jobs:
         run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
+          bundle exec rake app:update:bin
 
       # - name: Setup Node
       #   uses: actions/setup-node@v1
@@ -104,9 +105,12 @@ jobs:
         env:
           RAILS_ENV: test
           PGHOST: localhost
-          PGUSER: myapp
+          PGUSER: postgres
+          PGPASSWORD: postgres
         run: |
+          bundle exec rake db:create
+          bundle exec rake db:schema:load
           bin/rails db:setup
 
       - name: Run tests
-        run: bin/rspec
+        run: bin/rails test
