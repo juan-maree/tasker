@@ -1,0 +1,41 @@
+<nav class="navbar">
+  <div class="navbar-items flex items-center justify-between flex-wrap mx-auto">
+    <div class="flex items-center flex-no-shrink text-black mr-6">
+      <span class='md:flex hidden items-center justify-center border-r border-gray-700 mr-4 pr-4'>
+        <%= fa_stacked_icon "tasks inverse", base: "circle" %>
+      </span>
+      <span class="brand-text brand-text-lg">Tasker</span>
+    </div>
+    <div class="hidden md:flex items-center justify-center flex-wrap bg-gray-100 text-gray-600 h-7 w-64 border rounded p-1">
+      <%= fa_stacked_icon "search", class: "fill-current text-xs mr-1" %>
+      <span class='font-light text-sm ml-1'>Search</span>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar navbar-light bg-light d-flex">
+  <div class="container">
+    <div class="logo">
+      <a class="navbar-brand" href="<%= root_path %>">
+        <%= fa_stacked_icon "tasks inverse", base: "circle" %>
+        Tasker
+      </a>
+    </div>
+    <div class="m-auto">
+      <%= form_with url: search_path, method: :get, local: true, class: "form-inline search-form" do |form| %>
+        <%= form.text_field :query, value: params[:query], class: "form-control mr-sm-2", placeholder: "#search" %>
+      <% end %>
+    </div>
+    <div class="user-section">
+      <% if user_signed_in? %>
+        <a href="<%= user_path(current_user) %>"">
+          <i class="fa fa-user"></i>
+        </a>
+      <% else %>
+        <a href="<%= new_user_session_path %>">
+          <i class="fa fa-sign-in"></i>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</nav>

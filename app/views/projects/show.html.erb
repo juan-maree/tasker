@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @project.user_id %>
+</p>
+
+<%= link_to "Edit", edit_project_path(@project) %> |
+<%= link_to "Back", projects_path %>
+
+<h3>Pending Tasks</h3>
+<ul>
+    <% @project.tasks_by_status("Pending").each do |task| %>
+        <li><%= link_to task.name, task_path(task) %></li>
+    <% end %>
+</ul>
+
+<h3>Completed Tasks</h3>
+<ul>
+    <% @project.tasks_by_status("Complete").each do |task| %>
+        <li><span style="opacity: 0.4;"><strike><%= link_to task.name, task_path(task) %></strike></span></li>
+    <% end %>
+</ul>

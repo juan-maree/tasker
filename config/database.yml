@@ -5,17 +5,17 @@ development:
  <<: *default
  pool: 5
  host: localhost
- username: postgres
- password: postgres
- port: 5433
+ username: juan
+ password: 
+ port: 5432
  database: development_tasker
 test:
  <<: *default
  pool: 5
  host: localhost
- username: postgres
- password: postgres
- port: 5433
+ username: juan
+ password: 
+ port: 5432
  database: test_tasker
 production:
  <<: *default

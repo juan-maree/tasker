@@ -1,5 +1,5 @@
 <div class="task-show">
-    <%= @task.title %>
+    <%= @task.name %>
     <%= @task.due_date %>
     <div class="description">
         <% @task.description.to_s.split(" ").each do |word| %>
@@ -10,6 +10,7 @@
             <% end %>
         <% end %>
     </div>
+    <%= @task.project.name if @task.project %>
     <div class="delete">
         <% if current_user.tasks.exists?(@task.id) %>
             <%= link_to task_path(@task), method: :delete, data: { confirm: "Are you sure?" } do %>
@@ -17,4 +18,5 @@
             <% end %>
         <% end %>
     </div>
+    <%= button_to "Edit task", edit_task_path(@task), method: :get %>
 </div>
