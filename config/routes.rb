@@ -9,4 +9,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
   resources :tasks, only: [:new, :create, :show, :edit, :update, :destroy]
+
+  scope "api/v1" do
+    resources :tasks_json
+  end
 end
